@@ -42,8 +42,19 @@ function createWindow() {
   ipcMain.on('window-close', () => win.close());
 
   win.webContents.on('before-input-event', (event, input) => {
-    if (input.key === 'Escape' && !input.shift && !input.control && !input.alt) {
-      win.webContents.goBack();
+    if (input.type !== 'keyDown') return;
+    if (input.key === 'F11') {
+      win.setFullScreen(!win.isFullScreen());
+      event.preventDefault();
+    }
+    if (input.key === 'Escape') {
+      if (win.isFullScreen()) {
+        win.setFullScreen(false);
+        event.preventDefault();
+      } else if (win.webContents.canGoBack()) {
+        win.webContents.goBack();
+        event.preventDefault();
+      }
     }
   });
 }
