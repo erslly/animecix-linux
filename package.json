@@ -1,0 +1,47 @@
+{
+  "name": "animecix-linux",
+  "version": "1.0.0",
+  "description": "Animecix için unofficial Linux masaüstü uygulaması",
+  "homepage": "https://animecix.tv",
+  "main": "main.js",
+  "author": {
+    "name": "erslly",
+    "email": "contact@erslly.dev"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^37.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "build": {
+    "appId": "tv.animecix.desktop",
+    "productName": "Animecix",
+    "copyright": "Copyright © 2026 erslly",
+    "directories": {
+      "output": "dist"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "pacman"
+      ],
+      "icon": "animecix.png",
+      "category": "Video",
+      "executableName": "animecix",
+      "synopsis": "Animecix Desktop Client",
+      "maintainer": "contact@erslly.dev"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "animecix.png"
+    ],
+    "asar": true
+  }
+}
